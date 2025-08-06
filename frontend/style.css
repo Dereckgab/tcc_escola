@@ -1,0 +1,181 @@
+/* Fonte e base */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #0077cc;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+header h1.logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+/* Banner */
+.banner img {
+  border-radius: 0 0 15px 15px;
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.15);
+}
+
+/* Busca */
+.busca {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.busca input#campoBusca {
+  border-radius: 25px;
+  border: 2px solid #0077cc;
+  transition: border-color 0.3s ease;
+}
+
+.busca input#campoBusca:focus {
+  outline: none;
+  border-color: #ff6600;
+  box-shadow: 0 0 6px #ff6600aa;
+}
+
+.busca .input-group-text {
+  background-color: #0077cc;
+  color: white;
+  border: 2px solid #0077cc;
+  border-radius: 25px 0 0 25px;
+}
+
+/* Categorias */
+nav.categorias {
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+nav.categorias button.btn {
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  color: #0077cc;
+  transition: all 0.3s ease;
+}
+
+nav.categorias button.btn.active,
+nav.categorias button.btn:hover {
+  background-color: #ff6600;
+  color: white;
+  border-color: #ff6600;
+  box-shadow: 0 3px 6px rgba(255,102,0,0.5);
+}
+
+/* Produtos - cards */
+.produtos-container .card {
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  background-color: white;
+}
+
+.produtos-container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.produtos-container .card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.produtos-container .card-body {
+  padding: 1rem 1.2rem;
+}
+
+.produtos-container .card-title {
+  color: #0077cc;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.produtos-container .card-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.produtos-container p.fw-bold {
+  font-size: 1.1rem;
+  color: #ff6600;
+}
+
+/* Botão adicionar */
+.produtos-container .btn-primary {
+  background-color: #ff6600;
+  border: none;
+  font-weight: 700;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.produtos-container .btn-primary:hover {
+  background-color: #e65500;
+}
+
+/* Carrinho */
+section.bg-light .container {
+  max-width: 600px;
+}
+
+#lista-carrinho {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#lista-carrinho li.list-group-item {
+  font-weight: 600;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background-color: #fff7e6;
+  border: 1px solid #ffcc80;
+  color: #b36000;
+}
+
+#lista-carrinho li.list-group-item:last-child {
+  margin-bottom: 0;
+}
+
+#resumo-pedido {
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Botão finalizar pedido */
+.btn-success {
+  background-color: #0077cc;
+  border: none;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #005fa3;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  nav.categorias button.btn {
+    flex: 1 0 100%;
+  }
+}
