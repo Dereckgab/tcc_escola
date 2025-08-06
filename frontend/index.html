@@ -1,57 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Parça's Bar</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/frontend/style.css">
   </head>
   <body>
     <header class="bg-light py-3">
-    <div class="container">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <h1 class="logo mb-2 mb-md-0" style="color: #000;">Parça's Bar</h1>
+      <div class="container">
+        <h1 class="logo" style="color: #000;">Parça's Bar</h1>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <section class="banner">
-    <img src="/img/Design sem nome (1).png" alt="Banner da lanchonete" class="img-fluid w-100" style="height: auto; max-height: 500px; object-fit: cover;">
-  </section>
+    <section class="banner">
+      <img src="/img/Design sem nome (1).png" alt="Banner" class="img-fluid w-100">
+    </section>
 
-  <section class="busca py-3">
-    <div class="container">
-      <div class="input-group">
-        <span class="input-group-text">🔍</span>
+    <section class="busca py-3">
+      <div class="container">
         <input type="text" id="campoBusca" class="form-control" placeholder="Buscar no cardápio..." />
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="py-4 bg-light">
-    <div class="container">
-      <h4 class="mb-3">🛒 Carrinho</h4>
-      <ul id="lista-carrinho" class="list-group mb-3"></ul>
-      <button class="btn btn-success" onclick="finalizarPedido()">✅ Retirar no balcão</button>
-      <div id="resumo-pedido" class="mt-3 alert alert-info d-none"></div>
-    </div>
-  </section>
-
-  <nav class="categorias py-3">
-    <div class="container d-flex flex-wrap gap-2" id="categorias">
-      <!-- Botões gerados via JS -->
-    </div>
-  </nav>
-
-  <main class="produtos-container py-4">
-    <div class="container">
-      <div class="row" id="produtos-grid">
-        <!-- Produtos gerados via JS -->
+    <section class="py-4 bg-light">
+      <div class="container">
+        <h4>🛒 Carrinho</h4>
+        <ul id="lista-carrinho" class="list-group mb-3"></ul>
+        <button class="btn btn-success" onclick="finalizarPedido()">✅ Retirar no balcão</button>
+        <div id="resumo-pedido" class="mt-3 alert alert-info d-none"></div>
       </div>
-    </div>
-  </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <script src="produtos.js"></script>
+    </section>
+
+    <nav class="categorias py-3">
+      <div class="container d-flex flex-wrap gap-2" id="categorias"></div>
+    </nav>
+
+    <main class="produtos-container py-4">
+      <div class="container">
+        <div class="row" id="produtos-grid"></div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/frontend/produtos.js"></script>
   </body>
 </html>

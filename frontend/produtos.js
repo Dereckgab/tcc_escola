@@ -172,10 +172,40 @@ function finalizarPedido() {
     alert("Seu carrinho está vazio!");
     return;
   }
-  alert(`Pedido finalizado!\nTotal: R$ ${carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0).toFixed(2).replace('.', ',')}\nRetire no balcão.`);
-  carrinho = [];
-  atualizarCarrinho();
+
+  // Gera o JSON do pedido
+  const dados = {
+    itens: carrinho.map(item => ({
+      produto: item.nome,
+      quantidade: item.quantidade
+    }))
+  };
+
+  // Envia o pedido para o backend em Go
+  fetch("http://localhost:8080/pedido", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  })
+    .then(res => {
+      if (res.ok) {
+        alert("✅ Pedido enviado com sucesso! Retire no balcão.");
+        carrinho = [];
+        atualizarCarrinho();
+      } else {
+        res.text().then(texto => {
+          alert("Erro ao enviar pedido: " + texto);
+        });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("❌ Erro na conexão com o servidor.");
+    });
 }
+
 
 // --- Busca ---
 campoBusca.addEventListener("input", () => {
