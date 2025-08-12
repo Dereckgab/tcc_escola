@@ -1,51 +1,27 @@
-const produtos = {
-  "Drinks Pet": [
-    { nome: "Mansão Maromba", preco: 20.0 },
-    { nome: "Mansão Maromba Lata", preco: 12.0 }
-  ],
-  "Cervejas Lata": [
-    { nome: "Skol", preco: 5.0 },
-    { nome: "Brahma", preco: 5.0 },
-    { nome: "Brahma Zero", preco: 5.0 },
-    { nome: "Boa", preco: 5.0 },
-    { nome: "Amstel", preco: 5.0 }
-  ],
-  "Cervejas 600ml": [
-    { nome: "Antártica Boa", preco: 8.5 },
-    { nome: "Original", preco: 10.0 },
-    { nome: "Brahma", preco: 9.0 },
-    { nome: "Skol", preco: 8.5 },
-    { nome: "Amstel", preco: 9.0 },
-    { nome: "Sol", preco: 12.0 }
-  ],
-  "Refrigerantes": [
-    { nome: "Coca Cola Lata", preco: 5.0 },
-    { nome: "Coca Cola Zero Lata", preco: 5.0 },
-    { nome: "Fanta Lata", preco: 5.0 },
-    { nome: "Fanta Uva Lata", preco: 5.0 },
-    { nome: "Guaraná Lata", preco: 5.0 },
-    { nome: "Sprite Lata", preco: 5.0 },
-    { nome: "Coca Cola 2L", preco: 12.0 },
-    { nome: "Coca Cola Zero 2L", preco: 12.0 },
-    { nome: "Tubaína 2L", preco: 10.0 }
-  ],
-  "Porções": [
-    { nome: "1kg de Frango a Passarinho + 200g de Batata Frita", preco: 40.0 },
-    { nome: "800g de Filé de Frango + 200g de Batata Frita", preco: 45.0 }
-  ],
-  "Doces": [
-    { nome: "Canudo Feito", preco: 1.0 },
-    { nome: "Paçoca", preco: 1.0 },
-    { nome: "Doce de Abóbora", preco: 1.0 },
-    { nome: "Pirulito", preco: 1.0 },
-    { nome: "Chiclete", preco: 0.2 },
-    { nome: "Chipps", preco: 2.0 },
-    { nome: "Energético Monster", preco: 11.0 },
-    { nome: "Amendoim", preco: 2.0 },
-    { nome: "Torresmo Chipps", preco: 3.0 },
-    { nome: "Salame", preco: 20.0 }
-  ]
-};
+let produtos = {};
+
+fetch("/produtos")
+  .then(res => res.json())
+  .then(data => {
+    produtos = organizarPorCategoria(data);
+    exibirCategorias();
+    exibirProdutos("Todos");
+    atualizarCarrinho();
+  })
+  .catch(err => {
+    console.error("Erro ao carregar produtos:", err);
+  });
+
+function organizarPorCategoria(lista) {
+  const resultado = {};
+  lista.forEach(prod => {
+    if (!resultado[prod.categoria]) {
+      resultado[prod.categoria] = [];
+    }
+    resultado[prod.categoria].push(prod);
+  });
+  return resultado;
+}
 
 const listaCategorias = document.getElementById("categorias");
 const listaProdutos = document.getElementById("produtos-grid");
@@ -60,7 +36,6 @@ let carrinho = [];
 function exibirCategorias() {
   listaCategorias.innerHTML = "";
 
-  // Botão "Todos"
   const btnTodos = document.createElement("button");
   btnTodos.className = "btn btn-outline-primary active";
   btnTodos.textContent = "Todos";
@@ -173,7 +148,6 @@ function finalizarPedido() {
     return;
   }
 
-  // Gera o JSON do pedido
   const dados = {
     itens: carrinho.map(item => ({
       produto: item.nome,
@@ -181,8 +155,7 @@ function finalizarPedido() {
     }))
   };
 
-  // Envia o pedido para o backend em Go
-  fetch("http://localhost:8080/pedido", {
+  fetch("/pedido", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -205,7 +178,6 @@ function finalizarPedido() {
       alert("❌ Erro na conexão com o servidor.");
     });
 }
-
 
 // --- Busca ---
 campoBusca.addEventListener("input", () => {
@@ -246,7 +218,5 @@ campoBusca.addEventListener("input", () => {
 
 // --- Inicialização ---
 window.onload = () => {
-  exibirCategorias();
-  exibirProdutos("Todos");
-  atualizarCarrinho();
+  // exibirCategorias(), exibirProdutos(), atualizarCarrinho() serão chamados no fetch()
 };
