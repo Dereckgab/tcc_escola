@@ -1,17 +1,137 @@
+/* Reset básico */
 body {
-  background-color: #fff;
-  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 32px;
+  font-weight: 700;
+  font-size: 36px;
+  color: #d62828; /* vermelho elegante */
 }
 
-.card {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+/* Banner */
+.banner img {
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
+/* Campo de busca */
+.busca input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.busca input:focus {
+  border-color: #d62828;
+  box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.15);
+  outline: none;
+}
+
+/* Categorias */
 .categorias button {
-  margin-right: 8px;
+  background-color: #eeeeee;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.categorias button:hover,
+.categorias button.active {
+  background-color: #d62828;
+  color: #fff;
+}
+
+/* Cards */
+.card {
+  background-color: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+/* Botão adicionar */
+.btn-success {
+  background-color: #d62828;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #b71c1c;
+}
+
+/* Carrinho */
+.list-group-item {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.alert-info {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+}
+
+/* Botão remover item */
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Scrollbar opcional */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
 }
